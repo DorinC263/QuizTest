@@ -1,4 +1,6 @@
-﻿namespace QuizTest
+﻿using System.Globalization;
+
+namespace QuizTest
 {
     internal class Program
     {
@@ -12,8 +14,7 @@
             {
                 Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
                 Console.WriteLine("You can also play the Quizz you just created by pressing 'P'");
-                Console.Write("Question : ");
-                string questionText = Console.ReadLine();
+                string questionText = UIMethods.PromptForNonEmptyString("Question : ");
 
                 if (questionText.ToUpper() == "Q")
                 {
@@ -25,15 +26,10 @@
                     continue;
                 }
 
-                Console.Write("Option A : ");
-                string optionA = Console.ReadLine();
-
-                Console.Write("Option B : ");
-                string optionB = Console.ReadLine();
-
-                Console.Write("Option C : ");
-                string optionC = Console.ReadLine();
-
+                string optionA = UIMethods.PromptForNonEmptyString("Option A: ");
+                string optionB = UIMethods.PromptForNonEmptyString("Option B: ");
+                string optionC = UIMethods.PromptForNonEmptyString("Option C: "); 
+                
                 Console.WriteLine("And the correct answer (A, B or C ) : ");
                 char correctAnswer = char.ToUpper(Console.ReadKey().KeyChar);
 
@@ -57,6 +53,6 @@
                 Console.WriteLine($"C. {questions[i].OptionC}");
                 Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
             }
-        }        
+        }
     }
 }
