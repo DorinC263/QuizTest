@@ -10,7 +10,6 @@ namespace QuizTest
         public static void PlayQuiz(List<Question> questions)
         {
             int score = 0;
-            int totalQuestions = questions.Count;
             Console.WriteLine("Lets start the Quizz! \n");
 
             // The user can either answer from a set of questions that he previously added or he can add the questions and answer them.
@@ -20,6 +19,9 @@ namespace QuizTest
             {
                 questions = serializer.Deserialize(file) as List<Question>;
             }
+            /// even if the user adds or takes the questions from deserializer, total questions will give the correct output.
+            int totalQuestions = questions.Count;
+
             // for every question in the list of questions, he can choose the option to the question.
             foreach (var question in questions)
             {
@@ -43,7 +45,7 @@ namespace QuizTest
                     Console.WriteLine($"Inccorect. The correct answer was {question.CorrectAnswer}");
                 }
             }
-            Console.WriteLine($"Quizz Complete. You answered {score} correct questions / out of{totalQuestions} questions\n");
+            Console.WriteLine($"Quizz Complete. You answered {score} correct questions / out of {totalQuestions} questions\n");
         }
     }
 }
