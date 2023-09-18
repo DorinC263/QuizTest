@@ -1,4 +1,6 @@
-﻿namespace QuizTest
+﻿using System.Xml.Serialization;
+
+namespace QuizTest
 {
     /// <summary>
     /// This code plays the questions and answers the user just added.
@@ -11,6 +13,14 @@
             int totalQuestions = questions.Count;
             Console.WriteLine("Lets start the Quizz! \n");
 
+            // The user can either answer from a set of questions that he previously added or he can add the questions and answer them.
+            XmlSerializer serializer = new(typeof(List<Question>));
+            var path = @"C:\Users\Admin\Desktop\Questions.xml";
+            using (FileStream file = File.OpenRead(path))
+            {
+                questions = serializer.Deserialize(file) as List<Question>;
+            }
+            // for every question in the list of questions, he can choose the option to the question.
             foreach (var question in questions)
             {
                 Console.WriteLine("\n" + question.QuestionText);
@@ -33,7 +43,7 @@
                     Console.WriteLine($"Inccorect. The correct answer was {question.CorrectAnswer}");
                 }
             }
-            Console.WriteLine($"Quizz Complete. Your score is {score}/{totalQuestions}\n");
+            Console.WriteLine($"Quizz Complete. You answered {score} correct questions / out of{totalQuestions} questions\n");
         }
     }
 }
