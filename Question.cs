@@ -2,26 +2,36 @@
 {
     public class Question
     {
-        public string QuestionText { get; set; }
-        public string OptionA { get; set; }
-        public string OptionB { get; set; }
-        public string OptionC { get; set; }
-        public char CorrectAnswer { get; set; }
+        private string questionText;
+        private string optionA;
+        private string optionB;
+        private string optionC;
+        private char correctAnswer;
 
-        /// <summary>
-        /// A parameterless constructor for XML Serializer
-        /// </summary>
-        public Question()
+        public string QuestionText
         {
+            get { return questionText; }
+            set { questionText = value; }
         }
-
-        public Question(string questionText, string answerOptionA, string answerOptionB,string answerOptionC,char correctAnswer)
+        public string OptionA
         {
-            QuestionText = questionText;
-            OptionA = answerOptionA;
-            OptionB = answerOptionB;
-            OptionC = answerOptionC;
-            CorrectAnswer = correctAnswer;
+            get { return optionA; }
+            set { optionA = value; }
         }
+        public string OptionB
+        {
+            get { return optionB; }
+            set { optionB = value; }
+        }
+        public string OptionC
+        {
+            get { return optionC; }
+            set { optionC = value; }
+        }
+        public char CorrectAnswer
+        {
+            get { return correctAnswer; }
+            set { correctAnswer = value; }
+        } 
     }
 }
