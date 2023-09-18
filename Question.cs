@@ -32,6 +32,6 @@
         {
             get { return correctAnswer; }
             set { correctAnswer = value; }
-        } 
+        }
     }
 }

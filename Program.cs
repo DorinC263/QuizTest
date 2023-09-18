@@ -43,7 +43,16 @@ namespace QuizTest
                 }
                 else
                 {
-                    questions.Add(new Question());
+                    Question newQuestion = new Question
+                    {
+                        QuestionText = questionText,
+                        OptionA = optionA,
+                        OptionB = optionB,
+                        OptionC = optionC,
+                        CorrectAnswer = correctAnswer
+                    };
+
+                    questions.Add(newQuestion);
                     Console.WriteLine("\nQuestion added\n");
 
                     // It serializes the questions and options and correct answer only if the question is added to the list.
