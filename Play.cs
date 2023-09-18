@@ -1,5 +1,8 @@
 ﻿namespace QuizTest
 {
+    /// <summary>
+    /// This code plays the questions and answers the user just added.
+    /// </summary>
     internal class Play
     {
         public static void PlayQuiz(List<Question> questions)

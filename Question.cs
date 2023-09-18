@@ -2,11 +2,18 @@
 {
     public class Question
     {
-        public string QuestionText { get; }
-        public string OptionA { get; }
-        public string OptionB { get; }
-        public string OptionC { get; }
-        public char CorrectAnswer { get; }
+        public string QuestionText { get; set; }
+        public string OptionA { get; set; }
+        public string OptionB { get; set; }
+        public string OptionC { get; set; }
+        public char CorrectAnswer { get; set; }
+
+        /// <summary>
+        /// A parameterless constructor for XML Serializer
+        /// </summary>
+        public Question()
+        {
+        }
 
         public Question(string questionText, string answerOptionA, string answerOptionB,string answerOptionC,char correctAnswer)
         {

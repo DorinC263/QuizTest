@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace QuizTest
 {
@@ -12,14 +14,15 @@ namespace QuizTest
 
             while (true)
             {
-                Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
-                Console.WriteLine("You can also play the Quizz you just created by pressing 'P'");
+                UIMethods.DisplayQuitOrPlaying();
                 string questionText = UIMethods.PromptForNonEmptyString("Question : ");
-
+                
+                //If the user chooses Q it quits the program
                 if (questionText.ToUpper() == "Q")
                 {
                     break;
                 }
+                //if the user chooses P it goes to play the added questions.
                 else if (questionText.ToUpper() == "P")
                 {
                     Play.PlayQuiz(questions);
@@ -28,11 +31,12 @@ namespace QuizTest
 
                 string optionA = UIMethods.PromptForNonEmptyString("Option A: ");
                 string optionB = UIMethods.PromptForNonEmptyString("Option B: ");
-                string optionC = UIMethods.PromptForNonEmptyString("Option C: "); 
-                
-                Console.WriteLine("And the correct answer (A, B or C ) : ");
+                string optionC = UIMethods.PromptForNonEmptyString("Option C: ");
+
+                UIMethods.PromptCorrectAnswer();
                 char correctAnswer = char.ToUpper(Console.ReadKey().KeyChar);
 
+                // After he added the question and options, if he doesn`t choose the correct ABC as the correct answer, the question won`t be added at all.
                 if (correctAnswer != 'A' && correctAnswer != 'B' && correctAnswer != 'C')
                 {
                     Console.WriteLine("\nInvalid Option.The question won`t be added to the list");
@@ -41,6 +45,15 @@ namespace QuizTest
                 {
                     questions.Add(new Question(questionText, optionA, optionB, optionC, correctAnswer));
                     Console.WriteLine("\nQuestion added\n");
+
+                    // It serializes the questions and options and correct answer only if the question is added to the list.
+                    XmlSerializer serializer = new(typeof(List<Question>));
+
+                    var path = @"C:\Users\Admin\Desktop\Questions.xml";
+                    using (FileStream file = File.Create(path))
+                    {
+                        serializer.Serialize(file, questions);
+                    }
                 }
             }
 
@@ -52,7 +65,7 @@ namespace QuizTest
                 Console.WriteLine($"B. {questions[i].OptionB}");
                 Console.WriteLine($"C. {questions[i].OptionC}");
                 Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
-            }
+            }            
         }
     }
 }
