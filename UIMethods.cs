@@ -28,6 +28,19 @@
             return input;
         }
 
+        public static char PromptForEmptyChar(string message)
+        {
+            char userAnswer;
+            do
+            {
+                Console.Write(message);
+                userAnswer = char.ToUpper(Console.ReadKey().KeyChar);
+                Console.WriteLine();
+            }
+            while(userAnswer != 'A' && userAnswer != 'B' && userAnswer != 'C');            
+            return userAnswer;
+        }
+
         /// <summary>
         /// Displaying if the user wants to add the question with options or he wants to quit
         /// </summary>

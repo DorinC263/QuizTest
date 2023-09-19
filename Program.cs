@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace QuizTest
 {
@@ -16,7 +14,7 @@ namespace QuizTest
             {
                 UIMethods.DisplayQuitOrPlaying();
                 string questionText = UIMethods.PromptForNonEmptyString("Question : ");
-                
+
                 //If the user chooses Q it quits the program
                 if (questionText.ToUpper() == "Q")
                 {
@@ -58,6 +56,7 @@ namespace QuizTest
                     // It serializes the questions and options and correct answer only if the question is added to the list.
                     XmlSerializer serializer = new(typeof(List<Question>));
 
+                    //The path where you want the xml list to be saved.
                     var path = @"C:\Users\Admin\Desktop\Questions.xml";
                     using (FileStream file = File.Create(path))
                     {
@@ -74,7 +73,7 @@ namespace QuizTest
                 Console.WriteLine($"B. {questions[i].OptionB}");
                 Console.WriteLine($"C. {questions[i].OptionC}");
                 Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
-            }            
+            }
         }
     }
 }

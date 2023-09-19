@@ -30,8 +30,7 @@ namespace QuizTest
                 Console.WriteLine($"B. {question.OptionB}");
                 Console.WriteLine($"C. {question.OptionC}");
 
-                Console.WriteLine("Your Answer (A, B or C) : ");
-                char userAnswer = char.ToUpper(Console.ReadKey().KeyChar);
+                char userAnswer = UIMethods.PromptForEmptyChar("Your Answer (A, B or C) : ");
                 Console.WriteLine();
 
                 if (userAnswer == question.CorrectAnswer)
