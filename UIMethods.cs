@@ -61,5 +61,22 @@
         {
             Console.WriteLine("And the correct answer (A, B or C ) : ");
         }
+
+        /// <summary>
+        /// Display Questions
+        /// </summary>
+        /// <param name="questions">After the user added or played the quiz, this method displays all questions with the options and correct answer</param>
+        public static void DisplayQuestions(List<Question> questions)
+        {
+            Console.WriteLine("List of multiple-choice questions!");
+            for (int i = 0; i < questions.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}.{questions[i].QuestionText}");
+                Console.WriteLine($"A. {questions[i].OptionA}");
+                Console.WriteLine($"B. {questions[i].OptionB}");
+                Console.WriteLine($"C. {questions[i].OptionC}");
+                Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
+            }
+        }
     }
 }

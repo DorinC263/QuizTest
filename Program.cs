@@ -66,16 +66,7 @@ namespace QuizTest
                     }
                 }
             }
-
-            Console.WriteLine("List of multiple-choice questions!");
-            for (int i = 0; i < questions.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}.{questions[i].QuestionText}");
-                Console.WriteLine($"A. {questions[i].OptionA}");
-                Console.WriteLine($"B. {questions[i].OptionB}");
-                Console.WriteLine($"C. {questions[i].OptionC}");
-                Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
-            }
+            UIMethods.DisplayQuestions(questions);
         }
     }
 }
