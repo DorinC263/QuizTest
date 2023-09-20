@@ -55,15 +55,8 @@ namespace QuizTest
                     questions.Add(newQuestion);
                     Console.WriteLine("\nQuestion added\n");
 
-                    // It serializes the questions, options and correct answer only if the question is added to the list.
-                    XmlSerializer serializer = new(typeof(List<Question>));
-
-                    //The path where you want the xml list to be saved
-                    var path = @"C:\Users\Admin\Desktop\Questions.xml";
-                    using (FileStream file = File.Create(path))
-                    {
-                        serializer.Serialize(file, questions);
-                    }
+                    string relativePath = "Questions.xml";
+                    FileOperations.SerializeQuestions(questions,relativePath);
                 }
             }
             UIMethods.DisplayQuestions(questions);
