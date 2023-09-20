@@ -9,7 +9,7 @@
         {
             Console.WriteLine("\tWelcome to Question Game");
             Console.WriteLine("You can add as many multiple-choice questions as you like.");
-            Console.WriteLine("After that you can play your own Quizz!\n");
+            Console.WriteLine("After that you can play your own Quiz!\n");
         }
         /// <summary>
         /// No Empty Strings
@@ -27,7 +27,11 @@
             while (string.IsNullOrEmpty(input));
             return input;
         }
-
+        /// <summary>
+        /// No empty char
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>It prompts the user to select option only A B or C</returns>
         public static char PromptForEmptyChar(string message)
         {
             char userAnswer;
@@ -47,7 +51,7 @@
         public static void DisplayQuitOrPlaying()
         {
             Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
-            Console.WriteLine("You can also play the Quizz you just created by pressing 'P'");
+            Console.WriteLine("You can also play the Quiz you just created by pressing 'P'");
         }
 
         /// <summary>

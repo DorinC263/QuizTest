@@ -4,6 +4,8 @@ namespace QuizTest
 {
     internal class Program
     {
+        const string QUIT_GAME = "Q";
+        const string PLAY_GAME = "P";
         static void Main(string[] args)
         {
             UIMethods.DisplayWelcomeMessage();
@@ -16,12 +18,12 @@ namespace QuizTest
                 string questionText = UIMethods.PromptForNonEmptyString("Question : ");
 
                 //If the user chooses Q it quits the program
-                if (questionText.ToUpper() == "Q")
+                if (questionText.ToUpper() == QUIT_GAME)
                 {
                     break;
                 }
-                //if the user chooses P it goes to play the added questions.
-                else if (questionText.ToUpper() == "P")
+                //if the user chooses P it goes to play the added questions(either from memory or from XML file)
+                else if (questionText.ToUpper() == PLAY_GAME)
                 {
                     Play.PlayQuiz(questions);
                     continue;
@@ -53,10 +55,10 @@ namespace QuizTest
                     questions.Add(newQuestion);
                     Console.WriteLine("\nQuestion added\n");
 
-                    // It serializes the questions and options and correct answer only if the question is added to the list.
+                    // It serializes the questions, options and correct answer only if the question is added to the list.
                     XmlSerializer serializer = new(typeof(List<Question>));
 
-                    //The path where you want the xml list to be saved.
+                    //The path where you want the xml list to be saved
                     var path = @"C:\Users\Admin\Desktop\Questions.xml";
                     using (FileStream file = File.Create(path))
                     {

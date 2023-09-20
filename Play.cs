@@ -10,7 +10,7 @@ namespace QuizTest
         public static void PlayQuiz(List<Question> questions)
         {
             int score = 0;
-            Console.WriteLine("Lets start the Quizz! \n");
+            Console.WriteLine("Lets start the Quiz! \n");
 
             // The user can either answer from a set of questions that he previously added or he can add the questions and answer them.
             XmlSerializer serializer = new(typeof(List<Question>));
@@ -41,10 +41,10 @@ namespace QuizTest
                 }
                 else
                 {
-                    Console.WriteLine($"Inccorect. The correct answer was {question.CorrectAnswer}");
+                    Console.WriteLine($"Incorrect. The correct answer was {question.CorrectAnswer}");
                 }
             }
-            Console.WriteLine($"Quizz Complete. You answered {score} correct questions / out of {totalQuestions} questions\n");
+            Console.WriteLine($"Quiz Complete. You answered {score} correct questions / out of {totalQuestions} questions\n");
         }
     }
 }
