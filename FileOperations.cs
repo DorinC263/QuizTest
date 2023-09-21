@@ -6,8 +6,6 @@ namespace QuizTest
     {
         public static void SerializeQuestions(List<Question> questions, string relativePath)
         {
-            
-
             // Combine the base directory with the relative path to get the full path
             string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
 
@@ -27,17 +25,18 @@ namespace QuizTest
             string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
 
             XmlSerializer serializer = new(typeof(List<Question>));
-            using (FileStream file = File.Open(fullPath,FileMode.OpenOrCreate))
+            if(File.Exists(fullPath))
             {
-                if(file.Length > 0)
-                {
-                    return (List<Question>)serializer.Deserialize(file);
+                using(FileStream file = File.Open(fullPath, FileMode.OpenOrCreate))
+                { 
+                    if (file.Length > 0)
+                    {
+                        return (List<Question>)serializer.Deserialize(file);
+                    }                    
                 }
-                else
-                {
-                    return new List<Question>();
-                }  
             }
+            return new List<Question>();
+            
         }
 
     }

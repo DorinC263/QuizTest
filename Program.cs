@@ -1,65 +1,62 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using QuizTest;  // Import the QuizTest namespace to access its classes
 
 namespace QuizTest
 {
     internal class Program
     {
-        const string QUIT_GAME = "Q";
-        const string PLAY_GAME = "P";
+        const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
+        const string PLAY_GAME = "P";   // Define a constant string for playing the game
+
         static void Main(string[] args)
         {
-            UIMethods.DisplayWelcomeMessage();
+            UIMethods.DisplayWelcomeMessage(); // Display a welcome message to the user
+            List<Question> questions = new List<Question>(); // Declare a list to store questions
 
-            List<Question> questions = new List<Question>();
-
-            while (true)
+            while (true) // Start an infinite loop for user interaction
             {
-                UIMethods.DisplayQuitOrPlaying();
-                string questionText = UIMethods.PromptForNonEmptyString("Question : ");
+                UIMethods.DisplayQuitOrPlaying(); // Display options to the user
+                string questionText = UIMethods.PromptForNonEmptyString("Question: "); // Prompt user for a question
 
-                //If the user chooses Q it quits the program
-                if (questionText.ToUpper() == QUIT_GAME)
+                if (questionText.ToUpper() == QUIT_GAME) // Check if the user wants to quit
                 {
-                    break;
+                    break; // Exit the loop if the user chooses to quit
                 }
-                //if the user chooses P it goes to play the added questions(either from memory or from XML file)
-                else if (questionText.ToUpper() == PLAY_GAME)
+                else if (questionText.ToUpper() == PLAY_GAME) // Check if the user wants to play
                 {
-                    Play.PlayQuiz(questions);
-                    continue;
+                    Play.PlayQuiz(); // Call the PlayQuiz method to play the game
+                    continue; // Continue the loop to provide more options
                 }
 
-                string optionA = UIMethods.PromptForNonEmptyString("Option A: ");
-                string optionB = UIMethods.PromptForNonEmptyString("Option B: ");
-                string optionC = UIMethods.PromptForNonEmptyString("Option C: ");
+                string optionA = UIMethods.PromptForNonEmptyString("Option A: "); // Prompt for option A
+                string optionB = UIMethods.PromptForNonEmptyString("Option B: "); // Prompt for option B
+                string optionC = UIMethods.PromptForNonEmptyString("Option C: "); // Prompt for option C
 
-                UIMethods.PromptCorrectAnswer();
-                char correctAnswer = char.ToUpper(Console.ReadKey().KeyChar);
+                UIMethods.PromptCorrectAnswer(); // Prompt the user for the correct answer
+                char correctAnswer = UIMethods.PromptForEmptyChar("Your Answer (A, B, or C): "); // Prompt for the user's answer
 
-                // After he added the question and options, if he doesn`t choose the correct ABC as the correct answer, the question won`t be added at all.
-                if (correctAnswer != 'A' && correctAnswer != 'B' && correctAnswer != 'C')
+                if (!Enum.TryParse(correctAnswer.ToString(), out AnswerOption parsedAnswer)) // Check if the answer is valid
                 {
-                    Console.WriteLine("\nInvalid Option.The question won`t be added to the list");
+                    Console.WriteLine("\nInvalid Option. The question won't be added to the list."); // Display an error message
                 }
                 else
                 {
+                    // Create a new question and add it to the list
                     Question newQuestion = new Question
                     {
                         QuestionText = questionText,
-                        OptionA = optionA,
-                        OptionB = optionB,
-                        OptionC = optionC,
-                        CorrectAnswer = correctAnswer
+                        AnswerOptions = new List<string> { optionA, optionB, optionC },
+                        CorrectAnswer = parsedAnswer
                     };
+                    questions.Add(newQuestion); // Add the new question to the list
+                    Console.WriteLine("\nQuestion added\n"); // Display a success message
 
-                    questions.Add(newQuestion);
-                    Console.WriteLine("\nQuestion added\n");
-
-                    string relativePath = "Questions.xml";
-                    FileOperations.SerializeQuestions(questions,relativePath);
+                    string relativePath = "Questions.xml"; // Define the relative path for XML serialization
+                    FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file
                 }
             }
-            UIMethods.DisplayQuestions(questions);
+            UIMethods.DisplayQuestions(questions); // Display all added questions to the user
         }
     }
 }

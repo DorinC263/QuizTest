@@ -72,10 +72,11 @@
             for (int i = 0; i < questions.Count; i++)
             {
                 Console.WriteLine($"{i + 1}.{questions[i].QuestionText}");
-                Console.WriteLine($"A. {questions[i].OptionA}");
-                Console.WriteLine($"B. {questions[i].OptionB}");
-                Console.WriteLine($"C. {questions[i].OptionC}");
-                Console.WriteLine($"Correct Answer : {questions[i].CorrectAnswer}");
+                for(int j = 0; j < questions[i].AnswerOptions.Count; j++)
+                {
+                    Console.WriteLine($"{(AnswerOption)(j)} : {questions[i].AnswerOptions[j]}");
+                }
+                Console.WriteLine($"Correct answer : {questions[i].CorrectAnswer}");
             }
         }
     }
