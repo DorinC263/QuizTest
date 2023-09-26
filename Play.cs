@@ -18,13 +18,13 @@ namespace QuizTest
             foreach (var question in questions)
             {
                 Console.WriteLine($"\n{question.QuestionText}");
-                foreach(AnswerOption answerOption in Enum.GetValues(typeof(AnswerOption)))
+                foreach (AnswerOption answerOption in Enum.GetValues(typeof(AnswerOption)))
                 {
                     string optionLabel = Enum.GetName(typeof(AnswerOption), answerOption);
                     Console.WriteLine($"{optionLabel} : {question.AnswerOptions[(int)answerOption]}");
                 }
 
-                char userAnswerChar = UIMethods.PromptForEmptyChar("Your Answer (A, B, or C): ");
+                char userAnswerChar = UIMethods.PromptForValidAnswer("Your Answer : ");
                 Console.WriteLine();
 
                 if (Enum.TryParse(userAnswerChar.ToString(), out AnswerOption userAnswer))

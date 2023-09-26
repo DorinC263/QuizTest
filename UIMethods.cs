@@ -31,17 +31,19 @@
         /// No empty char
         /// </summary>
         /// <param name="message"></param>
-        /// <returns>It prompts the user to select option only A B or C</returns>
-        public static char PromptForEmptyChar(string message)
+        /// <returns>It goes through Enums to check for valid answers, if it doesnt contain, the loop continue.</returns>
+        public static char PromptForValidAnswer(string message)
         {
             char userAnswer;
+
             do
             {
                 Console.Write(message);
-                userAnswer = char.ToUpper(Console.ReadKey().KeyChar);
+                char.TryParse(Console.ReadKey().KeyChar.ToString().ToUpper(), out userAnswer);
                 Console.WriteLine();
             }
-            while(userAnswer != 'A' && userAnswer != 'B' && userAnswer != 'C');            
+            while (!Enum.GetNames(typeof(AnswerOption)).Contains(userAnswer.ToString()));
+
             return userAnswer;
         }
 
@@ -72,7 +74,7 @@
             for (int i = 0; i < questions.Count; i++)
             {
                 Console.WriteLine($"{i + 1}.{questions[i].QuestionText}");
-                for(int j = 0; j < questions[i].AnswerOptions.Count; j++)
+                for (int j = 0; j < questions[i].AnswerOptions.Count; j++)
                 {
                     Console.WriteLine($"{(AnswerOption)(j)} : {questions[i].AnswerOptions[j]}");
                 }
