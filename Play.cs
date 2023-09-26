@@ -39,11 +39,7 @@ namespace QuizTest
                     {
                         Console.WriteLine($"Incorrect. The correct answer was {question.CorrectAnswer}");
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Answer. Please enter A, B, or C!");
-                }
+                }                
             }
 
             Console.WriteLine($"Quiz Complete. You answered {score} correct questions out of {totalQuestions} questions\n");

@@ -37,8 +37,8 @@ namespace QuizTest
                     answerOptions.Add(optionText);
                 }
 
-                    UIMethods.PromptCorrectAnswer(); // Prompt the user for the correct answer
-                char correctAnswer = UIMethods.PromptForValidAnswer("Your Answer (A, B, or C): "); // Prompt for the user's answer
+                ///UIMethods.PromptCorrectAnswer();
+                char correctAnswer = UIMethods.PromptForValidAnswer("The correct answer is : "); // Prompt for the user's answer
 
                 if (!Enum.TryParse(correctAnswer.ToString(), out AnswerOption parsedAnswer)) // Check if the answer is valid
                 {

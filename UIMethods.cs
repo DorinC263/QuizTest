@@ -34,17 +34,29 @@
         /// <returns>It goes through Enums to check for valid answers, if it doesnt contain, the loop continue.</returns>
         public static char PromptForValidAnswer(string message)
         {
+            Console.Write(message);
             char userAnswer;
-
             do
             {
-                Console.Write(message);
                 char.TryParse(Console.ReadKey().KeyChar.ToString().ToUpper(), out userAnswer);
                 Console.WriteLine();
+                if (!Enum.GetNames(typeof(AnswerOption)).Contains(userAnswer.ToString()))
+                {
+                    Console.WriteLine($"Invalid answer. Please enter one of the following options: ");
+                    DisplayAnswerOption();
+                }
             }
             while (!Enum.GetNames(typeof(AnswerOption)).Contains(userAnswer.ToString()));
 
             return userAnswer;
+        }
+
+        public static void DisplayAnswerOption()
+        {
+            foreach (AnswerOption option in Enum.GetValues(typeof(AnswerOption)))
+            {
+                Console.WriteLine($"Option: {option}");
+            }
         }
 
         /// <summary>
@@ -61,7 +73,7 @@
         /// </summary>
         public static void PromptCorrectAnswer()
         {
-            Console.WriteLine("And the correct answer (A, B or C ) : ");
+            Console.WriteLine("The correct answer is: ");            
         }
 
         /// <summary>
