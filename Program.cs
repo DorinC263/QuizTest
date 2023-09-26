@@ -29,11 +29,16 @@ namespace QuizTest
                     continue; // Continue the loop to provide more options
                 }
 
-                string optionA = UIMethods.PromptForNonEmptyString("Option A: "); // Prompt for option A
-                string optionB = UIMethods.PromptForNonEmptyString("Option B: "); // Prompt for option B
-                string optionC = UIMethods.PromptForNonEmptyString("Option C: "); // Prompt for option C
+                //Use a loop to iterate through AnswerOption enum values
+                List<string> answerOptions = new List<string>();
 
-                UIMethods.PromptCorrectAnswer(); // Prompt the user for the correct answer
+                foreach(AnswerOption option in Enum.GetValues(typeof(AnswerOption)))
+                {
+                    string optionText = UIMethods.PromptForNonEmptyString($"Option {option} : ");
+                    answerOptions.Add(optionText);
+                }
+
+                    UIMethods.PromptCorrectAnswer(); // Prompt the user for the correct answer
                 char correctAnswer = UIMethods.PromptForEmptyChar("Your Answer (A, B, or C): "); // Prompt for the user's answer
 
                 if (!Enum.TryParse(correctAnswer.ToString(), out AnswerOption parsedAnswer)) // Check if the answer is valid
@@ -46,7 +51,7 @@ namespace QuizTest
                     Question newQuestion = new Question
                     {
                         QuestionText = questionText,
-                        AnswerOptions = new List<string> { optionA, optionB, optionC },
+                        AnswerOptions = answerOptions,
                         CorrectAnswer = parsedAnswer
                     };
                     questions.Add(newQuestion); // Add the new question to the list
