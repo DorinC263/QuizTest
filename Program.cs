@@ -31,7 +31,6 @@ namespace QuizTest
 
                 //Use a loop to iterate through AnswerOption enum values
                 List<string> answerOptions = new List<string>();
-
                 foreach(AnswerOption option in Enum.GetValues(typeof(AnswerOption)))
                 {
                     string optionText = UIMethods.PromptForNonEmptyString($"Option {option} : ");

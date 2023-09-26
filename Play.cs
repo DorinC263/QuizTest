@@ -18,11 +18,10 @@ namespace QuizTest
             foreach (var question in questions)
             {
                 Console.WriteLine($"\n{question.QuestionText}");
-                string[] optionLabel = { "Option A", "Option B", "Option C" };
-
-                for (int i = 0; i < question.AnswerOptions.Count; i++)
+                foreach(AnswerOption answerOption in Enum.GetValues(typeof(AnswerOption)))
                 {
-                    Console.WriteLine($"{optionLabel[i]} : {question.AnswerOptions[i]}");
+                    string optionLabel = Enum.GetName(typeof(AnswerOption), answerOption);
+                    Console.WriteLine($"{optionLabel} : {question.AnswerOptions[(int)answerOption]}");
                 }
 
                 char userAnswerChar = UIMethods.PromptForEmptyChar("Your Answer (A, B, or C): ");
