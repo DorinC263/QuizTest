@@ -40,25 +40,18 @@ namespace QuizTest
                 ///UIMethods.PromptCorrectAnswer();
                 char correctAnswer = UIMethods.PromptForValidAnswer("The correct answer is : "); // Prompt for the user's answer
 
-                if (!Enum.TryParse(correctAnswer.ToString(), out AnswerOption parsedAnswer)) // Check if the answer is valid
-                {
-                    Console.WriteLine("\nInvalid Option. The question won't be added to the list."); // Display an error message
-                }
-                else
-                {
                     // Create a new question and add it to the list
                     Question newQuestion = new Question
                     {
                         QuestionText = questionText,
                         AnswerOptions = answerOptions,
-                        CorrectAnswer = parsedAnswer
+                        CorrectAnswer = (AnswerOption)correctAnswer
                     };
                     questions.Add(newQuestion); // Add the new question to the list
                     Console.WriteLine("\nQuestion added\n"); // Display a success message
 
                     string relativePath = "Questions.xml"; // Define the relative path for XML serialization
-                    FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file
-                }
+                    FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file                
             }
             UIMethods.DisplayQuestions(questions); // Display all added questions to the user
         }

@@ -35,20 +35,21 @@
         public static char PromptForValidAnswer(string message)
         {
             Console.Write(message);
-            char userAnswer;
+            AnswerOption userAnswer;
+            bool isValidAnswer;
             do
             {
-                char.TryParse(Console.ReadKey().KeyChar.ToString().ToUpper(), out userAnswer);
-                Console.WriteLine();
-                if (!Enum.GetNames(typeof(AnswerOption)).Contains(userAnswer.ToString()))
+                Console.WriteLine(message);
+                char.TryParse(Console.ReadKey().KeyChar.ToString().ToUpper(), out char inputChar);
+                isValidAnswer = Enum.TryParse(inputChar.ToString(), out userAnswer);
+                if (!isValidAnswer)
                 {
-                    Console.WriteLine($"Invalid answer. Please enter one of the following options: ");
-                    DisplayAnswerOption();
+                    Console.WriteLine("\nInvalid Option");
                 }
             }
-            while (!Enum.GetNames(typeof(AnswerOption)).Contains(userAnswer.ToString()));
+            while (!isValidAnswer);
 
-            return userAnswer;
+            return (char)userAnswer;
         }
 
         public static void DisplayAnswerOption()
