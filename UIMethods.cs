@@ -32,14 +32,13 @@
         /// </summary>
         /// <param name="message"></param>
         /// <returns>It goes through Enums to check for valid answers, if it doesnt contain, the loop continue.</returns>
-        public static char PromptForValidAnswer(string message)
+        public static AnswerOption PromptForValidAnswer(string message)
         {
             Console.Write(message);
             AnswerOption userAnswer;
             bool isValidAnswer;
             do
             {
-                Console.WriteLine(message);
                 char.TryParse(Console.ReadKey().KeyChar.ToString().ToUpper(), out char inputChar);
                 isValidAnswer = Enum.TryParse(inputChar.ToString(), out userAnswer);
                 if (!isValidAnswer)
@@ -49,7 +48,7 @@
             }
             while (!isValidAnswer);
 
-            return (char)userAnswer;
+            return userAnswer;
         }
 
         public static void DisplayAnswerOption()
@@ -67,15 +66,7 @@
         {
             Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
             Console.WriteLine("You can also play the Quiz you just created by pressing 'P'");
-        }
-
-        /// <summary>
-        /// Prompts the user for the correct option to the question he added
-        /// </summary>
-        public static void PromptCorrectAnswer()
-        {
-            Console.WriteLine("The correct answer is: ");            
-        }
+        }        
 
         /// <summary>
         /// Display Questions

@@ -24,11 +24,9 @@ namespace QuizTest
                     Console.WriteLine($"{optionLabel} : {question.AnswerOptions[(int)answerOption]}");
                 }
 
-                char userAnswerChar = UIMethods.PromptForValidAnswer("Your Answer : ");
+                AnswerOption userAnswer = UIMethods.PromptForValidAnswer("Your Answer : ");
                 Console.WriteLine();
-
-                if (Enum.TryParse(userAnswerChar.ToString(), out AnswerOption userAnswer))
-                {
+                
                     if (userAnswer == question.CorrectAnswer)
                     {
                         Console.WriteLine("That is correct!");
@@ -38,8 +36,7 @@ namespace QuizTest
                     else
                     {
                         Console.WriteLine($"Incorrect. The correct answer was {question.CorrectAnswer}");
-                    }
-                }                
+                    }                            
             }
 
             Console.WriteLine($"Quiz Complete. You answered {score} correct questions out of {totalQuestions} questions\n");

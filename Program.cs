@@ -38,7 +38,7 @@ namespace QuizTest
                 }
 
                 ///UIMethods.PromptCorrectAnswer();
-                char correctAnswer = UIMethods.PromptForValidAnswer("The correct answer is : "); // Prompt for the user's answer
+                AnswerOption correctAnswer = UIMethods.PromptForValidAnswer("The correct answer is : "); // Prompt for the user's answer
 
                     // Create a new question and add it to the list
                     Question newQuestion = new Question
