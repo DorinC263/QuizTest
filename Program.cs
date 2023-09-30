@@ -1,10 +1,11 @@
 ﻿namespace QuizTest
 {
+
     internal class Program
     {
         const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
         const string PLAY_GAME = "P";   // Define a constant string for playing the game
-
+        public const string NAME_OF_XML = "Questions.xml";
         static void Main(string[] args)
         {
             UIMethods.DisplayWelcomeMessage(); // Display a welcome message to the user
@@ -45,7 +46,7 @@
                 questions.Add(newQuestion); // Add the new question to the list
                 Console.WriteLine("\nQuestion added\n"); // Display a success message
 
-                string relativePath = "Questions.xml"; // Define the relative path for XML serialization
+                string relativePath = NAME_OF_XML; // Define the relative path for XML serialization
                 FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file                
             }
             UIMethods.DisplayQuestions(questions); // Display all added questions to the user

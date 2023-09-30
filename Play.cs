@@ -7,7 +7,7 @@
             int score = 0;
             Console.WriteLine("Let's start the Quiz! \n");
 
-            string relativePath = "Questions.xml";
+            string relativePath = Program.NAME_OF_XML;
             List<Question> questions = FileOperations.DeSerializeQuestions(relativePath);
 
             int totalQuestions = questions.Count;
