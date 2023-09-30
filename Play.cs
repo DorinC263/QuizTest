@@ -26,17 +26,17 @@ namespace QuizTest
 
                 AnswerOption userAnswer = UIMethods.PromptForValidAnswer("Your Answer : ");
                 Console.WriteLine();
-                
-                    if (userAnswer == question.CorrectAnswer)
-                    {
-                        Console.WriteLine("That is correct!");
-                        score++;
-                        Console.WriteLine($"Your score is {score}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Incorrect. The correct answer was {question.CorrectAnswer}");
-                    }                            
+
+                if (userAnswer == question.CorrectAnswer)
+                {
+                    Console.WriteLine("That is correct!");
+                    score++;
+                    Console.WriteLine($"Your score is {score}");
+                }
+                else
+                {
+                    Console.WriteLine($"Incorrect. The correct answer was {question.CorrectAnswer}");
+                }
             }
 
             Console.WriteLine($"Quiz Complete. You answered {score} correct questions out of {totalQuestions} questions\n");

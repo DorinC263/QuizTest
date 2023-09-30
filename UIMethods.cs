@@ -66,7 +66,7 @@
         {
             Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
             Console.WriteLine("You can also play the Quiz you just created by pressing 'P'");
-        }        
+        }
 
         /// <summary>
         /// Display Questions

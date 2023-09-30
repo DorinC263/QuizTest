@@ -35,9 +35,7 @@ namespace QuizTest
                     }                    
                 }
             }
-            return new List<Question>();
-            
+            return new List<Question>();            
         }
-
     }
 }
