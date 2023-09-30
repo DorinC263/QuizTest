@@ -64,8 +64,8 @@
         /// </summary>
         public static void DisplayQuitOrPlaying()
         {
-            Console.WriteLine("Enter a multiple-choice question or 'Q' to quit");
-            Console.WriteLine("You can also play the Quiz you just created by pressing 'P'");
+            Console.WriteLine($"Enter a multiple-choice question or '{Program.QUIT_GAME}' to quit");
+            Console.WriteLine($"You can also play the Quiz you just created by pressing '{Program.PLAY_GAME}'");
         }
 
         /// <summary>

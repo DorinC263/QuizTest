@@ -3,8 +3,8 @@
 
     internal class Program
     {
-        const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
-        const string PLAY_GAME = "P";   // Define a constant string for playing the game
+        public const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
+        public const string PLAY_GAME = "P";   // Define a constant string for playing the game
         public const string NAME_OF_XML = "Questions.xml";
         static void Main(string[] args)
         {
