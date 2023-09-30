@@ -26,9 +26,8 @@
 
                 if (userAnswer == question.CorrectAnswer)
                 {
-                    Console.WriteLine("That is correct!");
                     score++;
-                    Console.WriteLine($"Your score is {score}");
+                    UIMethods.DisplayWin(score);
                 }
                 else
                 {

@@ -1,4 +1,6 @@
-﻿namespace QuizTest
+﻿using static System.Formats.Asn1.AsnWriter;
+
+namespace QuizTest
 {
     public static class UIMethods
     {
@@ -84,6 +86,13 @@
                 }
                 Console.WriteLine($"Correct answer : {questions[i].CorrectAnswer}");
             }
+        }
+
+        public static int DisplayWin(int score)
+        {
+            Console.WriteLine("That is correct!");
+            Console.WriteLine($"Your score is {score}");
+            return score;
         }
     }
 }
