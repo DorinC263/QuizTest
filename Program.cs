@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using QuizTest;  // Import the QuizTest namespace to access its classes
-
-namespace QuizTest
+﻿namespace QuizTest
 {
     internal class Program
     {

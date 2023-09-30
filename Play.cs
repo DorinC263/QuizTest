@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace QuizTest
+﻿namespace QuizTest
 {
     internal class Play
     {
