@@ -24,26 +24,8 @@
                     Play.PlayQuiz(); // Call the PlayQuiz method to play the game
                     continue; // Continue the loop to provide more options
                 }
-
-                //Use a loop to iterate through AnswerOption enum values
-                List<string> answerOptions = new List<string>();
-                foreach (AnswerOption option in Enum.GetValues(typeof(AnswerOption)))
-                {
-                    string optionText = UIMethods.PromptForNonEmptyString($"Option {option} : ");
-                    answerOptions.Add(optionText);
-                }
-
-                AnswerOption correctAnswer = UIMethods.PromptForValidAnswer("The correct answer is : "); // Prompt for the user's answer
-
-                // Create a new question and add it to the list
-                Question newQuestion = new Question
-                {
-                    QuestionText = questionText,
-                    AnswerOptions = answerOptions,
-                    CorrectAnswer = correctAnswer
-                };
-                questions.Add(newQuestion); // Add the new question to the list
-                UIMethods.DisplaySuccessMessage();
+                
+                QuizOperations.GetAnswerOption(questionText,questions); //Calling method from QuizOperations
 
                 string relativePath = NAME_OF_XML; // Define the relative path for XML serialization
                 FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file                
