@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="questionText">The text of the question.</param>
         /// <param name="questions">The list of questions to add the new question to.</param>
-        public static List<string> GetAnswerOption(string questionText,List<Question> questions)
+        public static List<string> GetAnswerOption(string questionText, List<Question> questions)
         {
             List<string> answerOptions = new List<string>();
             foreach (AnswerOption option in Enum.GetValues(typeof(AnswerOption)))

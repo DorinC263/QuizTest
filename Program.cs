@@ -4,7 +4,7 @@
     {
         public const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
         public const string PLAY_GAME = "P";   // Define a constant string for playing the game
-        public const string NAME_OF_XML = "Questions.xml";
+        public const string NAME_OF_XML = "Questions.xml"; //Define a constant string for saving the XML file.
         static void Main(string[] args)
         {
             UIMethods.DisplayWelcomeMessage(); // Display a welcome message to the user

@@ -50,15 +50,7 @@
 
             return userAnswer;
         }
-
-        public static void DisplayAnswerOption()
-        {
-            foreach (AnswerOption option in Enum.GetValues(typeof(AnswerOption)))
-            {
-                Console.WriteLine($"Option: {option}");
-            }
-        }
-
+        
         /// <summary>
         /// Displaying if the user wants to add the question with options or he wants to quit
         /// </summary>
