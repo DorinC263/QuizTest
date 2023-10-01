@@ -1,6 +1,5 @@
 ﻿namespace QuizTest
 {
-
     internal class Program
     {
         public const string QUIT_GAME = "Q";   // Define a constant string for quitting the game
@@ -44,7 +43,7 @@
                     CorrectAnswer = correctAnswer
                 };
                 questions.Add(newQuestion); // Add the new question to the list
-                Console.WriteLine("\nQuestion added\n"); // Display a success message
+                UIMethods.DisplaySuccessMessage();
 
                 string relativePath = NAME_OF_XML; // Define the relative path for XML serialization
                 FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file                

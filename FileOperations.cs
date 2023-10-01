@@ -17,7 +17,7 @@ namespace QuizTest
             {
                 serializer.Serialize(file, questions);
             }
-            Console.WriteLine($"Serialized questions to the following path: {fullPath}");
+            UIMethods.DisplaySerializationPath(fullPath);
         }
 
         public static List<Question> DeSerializeQuestions( string relativePath)

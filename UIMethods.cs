@@ -1,6 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-
-namespace QuizTest
+﻿namespace QuizTest
 {
     public static class UIMethods
     {
@@ -93,6 +91,41 @@ namespace QuizTest
             Console.WriteLine("That is correct!");
             Console.WriteLine($"Your score is {score}");
             return score;
+        }
+
+        public static void DisplayQuizComplete(int score, int totalQuestions)
+        {
+            Console.WriteLine($"Quiz Complete. You answered {score} correct questions out of {totalQuestions} questions\n");
+        }
+
+        public static void DisplaySerializationPath(string fullPath)
+        {
+            Console.WriteLine($"Serialized questions to the following path: {fullPath}");
+        }
+
+        public static void DisplaySuccessMessage()
+        {
+            Console.WriteLine("\nQuestion added\n"); // Display a success message
+        }
+
+        public static void DisplayIncorrectAnswer(AnswerOption correctAnswer)
+        {
+            Console.WriteLine($"Incorrect. The correct answer was {correctAnswer}");
+        }
+
+        public static void DisplayStartQuiz()
+        {
+            Console.WriteLine("Let's start the Quiz! \n");
+        }
+
+        public static void DisplayQuestionsWithOptions(Question question)
+        {
+            Console.WriteLine($"\n{question.QuestionText}");
+            foreach (AnswerOption answerOption in Enum.GetValues(typeof(AnswerOption)))
+            {
+                string optionLabel = Enum.GetName(typeof(AnswerOption), answerOption);
+                Console.WriteLine($"{optionLabel} : {question.AnswerOptions[(int)answerOption]}");
+            }
         }
     }
 }
