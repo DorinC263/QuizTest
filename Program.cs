@@ -24,8 +24,12 @@
                     Play.PlayQuiz(); // Call the PlayQuiz method to play the game
                     continue; // Continue the loop to provide more options
                 }
-                
-                QuizOperations.GetAnswerOption(questionText,questions); //Calling method from QuizOperations
+
+                List<string> answerOptions = QuizOperations.GetAnswerOption(); //Calling method from QuizOperations
+
+                QuizOperations.AddQuestion(questionText, answerOptions, questions);  //Calling method from QuizOperations
+
+                UIMethods.DisplaySuccessMessage();  // Display a success message
 
                 string relativePath = NAME_OF_XML; // Define the relative path for XML serialization
                 FileOperations.SerializeQuestions(questions, relativePath); // Serialize questions to an XML file                

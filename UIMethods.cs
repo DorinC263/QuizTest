@@ -31,7 +31,7 @@
         /// No empty char
         /// </summary>
         /// <param name="message"></param>
-        /// <returns>It goes through Enums to check for valid answers, if it doesnt contain, the loop continue.</returns>
+        /// <returns>It goes through Enums to check for valid answers, if it doesnt contain them, the loop continue.</returns>
         public static AnswerOption PromptForValidAnswer(string message)
         {
             Console.Write(message);

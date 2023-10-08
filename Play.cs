@@ -29,8 +29,7 @@
                     UIMethods.DisplayIncorrectAnswer(question.CorrectAnswer);
                 }
             }
-
-            UIMethods.DisplayQuizComplete(score,totalQuestions);
+            UIMethods.DisplayQuizComplete(score, totalQuestions);
         }
     }
 }
